@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Hieu! ❤️</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/background-assets/pixel-heart-favicon.png">
+    <!-- KHẮC PHỤC LỖI QUAN TRỌNG: Thêm thư viện EmailJS để gửi email -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="pixel-background"></div>
+
+    <header class="navbar">
+        <nav>
+            <ul>
+                <li><a href="#game-intro">Game</a></li>
+                <li><a href="#scrapbook">Memories</a></li>
+                <li><a href="#love-letter">Love Letter</a></li>
+                <li><a href="#surprise">Surprise</a></li>
+                <li><a href="#journal">Journal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="game-intro" class="hero-section pixel-card">
+            <div class="container">
+                <h1>Happy Birthday, Hieu!</h1>
+                <p>Prepare for an adventure... press start!</p>
+                <button id="startGameBtn" class="pixel-button">Start Game</button>
+            </div>
+        </section>
+
+        <section id="game-area" class="pixel-section hidden">
+            <div class="container">
+                <h2>Catch the Hearts! ❤️</h2>
+                <p class="pixel-text">Move left and right to catch the falling hearts. Don't let them touch the ground!</p>
+                <div id="gameCanvasContainer">
+                    <canvas id="birthdayGameCanvas" width="600" height="400"></canvas>
+                    <div class="game-overlay hidden" id="gameOverOverlay">
+                        <div class="pixel-card">
+                            <h3>Game Over!</h3>
+                            <p>You caught <span id="finalScore">0</span> hearts!</p>
+                            <button id="continueAfterGameBtn" class="pixel-button">Continue to Your Surprise!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="birthday-message" class="pixel-section hidden">
+            <div class="container pixel-card">
+                <h2>Happy Birthday, My Love!</h2>
+                <div class="message-animation">
+                    <img src="images/timeline-assets/pixel-heart.gif" alt="Animated Pixel Heart" class="pixel-animation">
+                </div>
+                <p class="emotional-text"> Chúc mừng sinh nhật anh yêu!!! Em mong là game không bị lỗi.. Nhưng mà dù sao thì anh yêu cùng xem những kỉ niệm mà em đã chuẩn bị cho anh yêu nèee </p>
+                <button id="continueToSiteBtn" class="pixel-button">Explore the Site</button>
+            </div>
+        </section>
+
+        <section id="scrapbook" class="pixel-section hidden">
+            <div class="container pixel-card">
+                <h2>Our Journey Together</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <img src="images/timeline-assets/memory1.jpg" alt="Memory 1" class="pixel-img">
+                        <h3>Our First Date</h3>
+                        <p>Kaka giờ mình chơi trò "Ngược về quá khứ nhaaa", thật sự là em luôn cảm thấy bất ngờ và hạnh phúc vì em gặp được anh và được biết anh, dù một cách siêu tình cờ luôn!!!!! Kaka cảm ơn vì đã đến bên em !!!</p>
+                        <span class="date-label">June 2025</span>
+                    </div>
+                    <div class="timeline-item">
+                        <img src="images/timeline-assets/memory2.jpg" alt="Memory 2" class="pixel-img">
+                        <h3>The "Work Date" that I'd remember forever</h3>
+                        <p>Thật sự em cảm thấy siêu cảm động luôn vì tụi mình luôn có ritual thứ 3 mỗi tuần đi chơi với nhau, những lúc đi work date dù chủ yêu là em làm phiền anh vcl kaka, nhưng dù thế nào em cũng sẽ luôn nhớ những lúc được phiền anh như z kaka</p>
+                        <span class="date-label">Summer 2025</span>
+                    </div>
+                    <div class="timeline-item">
+                        <img src="images/timeline-assets/memory3.jpg" alt="Memory 3" class="pixel-img">
+                        <h3>Our First Introduction to your Friends</h3>
+                        <p>Trời má em rén gần chết luôn mă, mà em bình thường cũng giỡn giỡn mà gặp mng em cứng họng luôn.. Nhưng mà nhờ có anh nên em cảm thấy cũng đỡ đỡ 1 chút kkkk yêu anh nhiềuuuu</p>
+                        <span class="date-label">July 2025</span>
+                    </div>
+                    <div class="timeline-item">
+                        <img src="images/timeline-assets/memory4.jpg" alt="Memory 4" class="pixel-img">
+                        <h3>Future Loading...</h3>
+                        <p>Aaaa thiệt lòng là sắp phải yêu xa rồi sao!!! Nhưng cũng giống như 7749 cuộc trò chuyện của mình, tụi mình sẽ cùng nhao cố gắng thui, anh nhỉii</p>
+                        <span class="date-label">Always</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="love-letter" class="pixel-section hidden">
+            <div class="container pixel-card">
+                <h2>A Love Letter to You</h2>
+                <div class="letter-content pixel-text-box">
+                    <p>Gửi anh yêu của em,</p>
+                    <p>Chúc mừng sinh nhật, tình yêu tuyệt vời của em! Từng khoảnh khắc bên anh giống như một cuộc hành trình khám phá những điều kỳ diệu. Anh lấp đầy cuộc sống của em bằng ánh sáng, tiếng cười và niềm vui. Từ những buổi tối yên bình đến những lần đi chơi vòng vòng Sài Gòn, mỗi ngày trôi qua đều là một kỷ niệm quý giá, tạo nên câu chuyện tình yêu đẹp đẽ của chúng ta.</p>
+                    <p>Đối với em, anh không chỉ là bạn trai, mà còn là người bạn thân nhất, là một người anh, và là người biến những điều bình thường nhất trở nên phi thường. Cảm ơn anh vì sự kiên nhẫn vô bờ, vì luôn ở đó ủng hộ em, và vì đã là một người đàn ông tuyệt vời như thế.</p>
+                    <p>Trước đây, em luôn nghĩ tình yêu là một điều gì đó lớn lao và hào nhoáng. Nhưng từ khi ở bên anh, em mới hiểu được định nghĩa của tình yêu trưởng thành là gì. Đó là sự bình yên, tin tưởng và đồng hành cùng nhau trên mọi chặng đường.</p>
+                    <p>Chúc anh một ngày sinh nhật thật đặc biệt, ngập tràn hạnh phúc và tình yêu. Chúc anh thực hiện được mọi điều mà anh mơ ước, chúc anh luôn tìm được sự ổn định và bình yên trong cuộc sống. Em mong rằng tương lai có như thế nào, anh vẫn luôn hạnh phúc và vui vẻ, yêu đời, vì đối với em, em xứng đáng với tất cả những tình yêu trên đời này!</p>
+                    <p>Bằng tất cả trái tim của em,</p>
+                    <p>Anh Thư.</p>
+                </div>
+            </div>
+        </section>
+
+<section id="surprise" class="pixel-section hidden">
+    <div class="container pixel-card">
+        <h2>A Little Secret Just for You...</h2>
+        <p class="pixel-text">Click the button below to reveal a special message!</p>
+        <button id="revealEasterEggBtn" class="pixel-button">Find the Surprise!</button>
+        <div id="easterEggContent" class="hidden pixel-text-box">
+            <p>You found me! This secret message is just to say...</p>
+            <p class="surprise-message">Em yêu anh nhiều nhiềuuu lắm nèeeee, và đây sẽ là những điều em còn muốn nói zới anh một xíu nữa kakaka</p>
+            <video id="secretVideo" src="video/secret_video.mp4" controls></video>
+        </div>
+    </div>
+</section>
+
+        <section id="journal" class="pixel-section hidden">
+            <div class="container pixel-card">
+                <h2>When you miss meeee ❤️</h2>
+                <p class="pixel-text">Mỗi khi nhớ đến em, anh hãy viết một lời nhắn vào đây nhé! Lời nhắn của anh sẽ được gửi đến email của em.</p>
+                
+                <form id="memoryForm">
+                    <div class="form-group">
+                        <label for="recipient" class="pixel-text">Gửi đến ai?</label>
+                        <select id="recipient" class="pixel-select">
+                            <option value="to_em">Anh Thư (To Em)</option>
+                            <option value="to_anh">Hiếu (To Anh)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="memoryInput" class="pixel-text">Lời nhắn của anh:</label>
+                        <textarea id="memoryInput" rows="5" class="pixel-textarea" placeholder="Hôm nay anh nhớ em nhiều..."></textarea>
+                    </div>
+                    <button type="submit" class="pixel-button">Gửi Cho Em!</button>
+                </form>
+                
+                <div id="formMessage" class="pixel-text hidden">Lời nhắn của anh đã được gửi đi thành công! ❤️</div>
+            </div>
+        </section>
+    </main>
+
+    <div id="musicPlayer" class="music-jukebox">
+        <img src="images/timeline-assets/pixel-jukebox.png" alt="Pixel Jukebox" class="jukebox-img">
+        <span class="jukebox-title">Nghe Nè!</span>
+        <div class="controls">
+    <button id="playPauseBtn" class="pixel-button">▶️</button>
+    <button id="nextSongBtn" class="pixel-button">⏭️</button>
+    <marquee id="currentSongTitle" class="pixel-text"></marquee>
+        </div>
+        <audio id="audioPlayer" preload="auto"></audio>
+        <div class="musical-notes-animation"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

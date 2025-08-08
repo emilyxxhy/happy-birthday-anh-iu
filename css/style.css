@@ -1,0 +1,668 @@
+/* style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+:root {
+    --pixel-font: 'Press Start 2P', cursive;
+    --pixel-bg-color: #2c3e50; /* Dark blue/grey */
+    --pixel-text-color: #ecf0f1; /* Light grey */
+    --pixel-accent-color: #e74c3c; /* Red (for buttons, highlights) */
+    --pixel-secondary-accent: #f1c40f; /* Yellow (for glowing, emphasis) */
+    --pixel-border-color: #1a242f; /* Even darker blue/grey */
+    --pixel-shadow-color: #0d1217; /* Deep shadow */
+    --pixel-card-bg: #34495e; /* Medium blue/grey */
+    --pixel-game-bg: #557c83; /* Game specific background */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: var(--pixel-font);
+    color: var(--pixel-text-color);
+    background-color: var(--pixel-bg-color);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    image-rendering: pixelated; /* Essential for pixel art throughout */
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    -webkit-font-smoothing: none; /* For pixelated font rendering */
+    font-smoothing: none;
+}
+
+/* Global Container for content centering */
+.container {
+    width: 90%;
+    max-width: 960px; /* Max width for content */
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* --- Global Pixel Elements --- */
+.pixel-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* --- FIX: Correct path for pixel-tile-bg.png --- */
+    background-image: url('../images/background-assets/pixel-tile-bg.png');
+    background-repeat: repeat;
+    background-size: 32px 32px;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+
+.pixel-card, .pixel-text-box {
+    background-color: var(--pixel-card-bg);
+    border: 2px solid var(--pixel-border-color);
+    box-shadow: 4px 4px 0 var(--pixel-shadow-color); /* Pixel border effect */
+    padding: 25px;
+    margin: 30px auto;
+    max-width: 800px;
+    border-radius: 0; /* Sharp edges */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.pixel-text-box {
+    text-align: left;
+    line-height: 1.5;
+    font-size: 1rem;
+    padding: 20px;
+}
+.pixel-text-box p {
+    margin-bottom: 1em;
+}
+
+.pixel-button {
+    background-color: var(--pixel-accent-color);
+    color: var(--pixel-text-color);
+    border: 2px solid var(--pixel-border-color);
+    padding: 12px 25px;
+    font-family: var(--pixel-font);
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 var(--pixel-shadow-color);
+    transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+    -webkit-font-smoothing: none; /* For pixelated text rendering */
+    appearance: none; /* Reset button styles */
+    line-height: 1; /* For consistent height */
+}
+
+.pixel-button:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 var(--pixel-shadow-color);
+    filter: brightness(1.1); /* Subtle hover glow */
+}
+
+.pixel-button:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px 0 var(--pixel-shadow-color);
+}
+
+.pixel-img {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--pixel-border-color);
+    box-shadow: 2px 2px 0 var(--pixel-shadow-color);
+    display: block; /* Remove extra space below images */
+    margin: 0 auto;
+}
+
+.pixel-section {
+    padding: 60px 20px;
+    text-align: center;
+    min-height: calc(100vh - 80px); /* Adjust based on navbar height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative; /* For overlays */
+}
+
+.hero-section {
+    padding: 100px 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+h1, h2, h3 {
+    color: var(--pixel-secondary-accent);
+    text-shadow: 2px 2px 0 var(--pixel-shadow-color);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.pixel-text {
+    text-shadow: 1px 1px 0 var(--pixel-shadow-color);
+}
+
+/* --- Navbar Styling --- */
+.navbar {
+    background-color: var(--pixel-card-bg);
+    border-bottom: 2px solid var(--pixel-border-color);
+    box-shadow: 0 4px 0 var(--pixel-shadow-color);
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar li {
+    margin: 0 15px;
+    position: relative;
+    /* Optional: Add initial float/glow if desired */
+    /* animation: float 2s infinite alternate ease-in-out; */
+}
+
+.navbar a {
+    color: var(--pixel-text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    display: block;
+    transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+}
+
+.navbar a:hover {
+    color: var(--pixel-secondary-accent);
+    text-shadow: 1px 1px 0 var(--pixel-shadow-color);
+    animation: glow-text 1s infinite alternate; /* Glowing effect on hover */
+}
+
+/* --- Game Section Styling --- */
+#gameCanvasContainer {
+    background-color: var(--pixel-game-bg);
+    border: 4px solid var(--pixel-border-color);
+    box-shadow: 6px 6px 0 var(--pixel-shadow-color);
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 3 / 2;
+}
+
+#birthdayGameCanvas {
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    width: 100%;
+    height: 100%;
+}
+
+.game-info {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Press Start 2P', sans-serif; /* Use a pixel font for consistency */
+    color: white;
+    z-index: 10;
+    font-size: 1.5rem;
+}
+
+.game-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    backdrop-filter: blur(2px);
+}
+
+.game-overlay .pixel-card {
+    margin: 0;
+    padding: 30px;
+    max-width: 400px;
+}
+
+.game-overlay h3 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.game-overlay p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* --- Birthday Message Section --- */
+.message-animation {
+    margin: 30px auto;
+}
+.pixel-animation {
+    image-rendering: pixelated;
+    width: 120px; /* Size of your animated GIF */
+    height: auto;
+    animation: glow 1.5s infinite alternate ease-in-out; /* Apply a glow animation */
+}
+.emotional-text {
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* --- Scrapbook/Timeline Styling --- */
+.timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    margin-top: 30px;
+    justify-content: center; /* Center items if not full row */
+}
+
+.timeline-item {
+    background-color: var(--pixel-bg-color);
+    border: 2px solid var(--pixel-border-color);
+    box-shadow: 3px 3px 0 var(--pixel-shadow-color);
+    padding: 15px;
+    text-align: left;
+    position: relative;
+    overflow: hidden; /* For smooth transitions on hover */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.timeline-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 5px 5px 0 var(--pixel-secondary-accent); /* Accent color on hover */
+}
+
+.timeline-item img {
+    margin-bottom: 10px;
+    border: 1px solid var(--pixel-shadow-color);
+    width: 100%; /* Fill container */
+    height: 180px; /* Fixed height for consistency */
+    object-fit: cover; /* Cover area, crop if needed */
+}
+
+.timeline-item h3 {
+    color: var(--pixel-secondary-accent);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+.timeline-item p {
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--pixel-text-color);
+}
+.timeline-item .date-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--pixel-accent-color);
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* --- Love Letter Styling --- */
+.letter-content {
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* --- Surprise Section Styling --- */
+.surprise-message {
+    color: var(--pixel-secondary-accent);
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 1.2rem;
+    font-weight: bold;
+    animation: blink 1s infinite alternate; /* Blinking effect for emphasis */
+}
+
+#secretAudio {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 20px;
+    filter: drop-shadow(2px 2px 0 var(--pixel-shadow-color));
+}
+
+/* --- Journal Styling --- */
+#journal .pixel-card {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--pixel-text-color);
+}
+
+#journal h2 {
+    margin-bottom: 10px;
+    font-family: var(--pixel-font);
+    color: var(--pixel-accent-color);
+}
+
+#journal p.pixel-text,
+#journal .form-group label {
+    margin-bottom: 20px;
+    font-family: var(--main-font);
+    color: var(--pixel-text-color);
+}
+
+#journalForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.journal-form textarea {
+    font-family: 'Montserrat', sans-serif;
+}
+/* Thêm style cho thẻ select */
+.pixel-select {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var(--pixel-game-bg);
+    border: 2px solid var(--pixel-border-color);
+    box-shadow: 4px 4px 0 var(--pixel-shadow-color);
+    padding: 10px;
+    font-family: var(--main-font);
+    color: white;
+    appearance: none; /* Ẩn mũi tên mặc định */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M287%20165.7c-4.6-4.6-12-4.6-16.6%200L146.2%20289.4c-4.6%204.6-12%204.6-16.6%200L5.6%20165.7c-4.6-4.6-12-4.6-16.6%200-4.6%204.6-4.6%2012%200%2016.6l124%20124c4.6%204.6%2012%204.6%2016.6%200l124-124c4.6-4.6%204.6-12%200-16.6z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+    cursor: pointer;
+}
+
+.pixel-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var(--pixel-game-bg);
+    border: 2px solid var(--pixel-border-color);
+    box-shadow: 4px 4px 0 var(--pixel-shadow-color);
+    padding: 10px;
+    font-family: var(--main-font);
+    color: white;
+    resize: vertical;
+    outline: none;
+}
+
+.pixel-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#formMessage {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: var(--pixel-love-color);
+    font-family: var(--main-font);
+}
+
+/* --- Music Player Styling --- */
+.music-jukebox {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--pixel-card-bg);
+    border: 2px solid var(--pixel-border-color);
+    box-shadow: 4px 4px 0 var(--pixel-shadow-color);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 999;
+    min-width: 150px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.music-jukebox:hover {
+    transform: translateY(-5px);
+}
+
+.jukebox-img {
+    width: 70px;
+    height: auto;
+    margin-bottom: 5px;
+    image-rendering: pixelated;
+    animation: float 2s infinite alternate;
+}
+
+/* Đây là phần đã được cập nhật để căn chỉnh lại */
+.music-jukebox .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 100%; /* Đảm bảo chiếm toàn bộ chiều rộng */
+    box-sizing: border-box; /* Đảm bảo padding không làm tràn ra ngoài */
+    flex-wrap: nowrap; /* Thêm dòng này để ngăn các nút xuống hàng */
+}
+
+.music-jukebox .pixel-button {
+    padding: 5px 10px;
+    font-size: 12px;
+    min-width: 30px;
+    text-align: center;
+}
+
+#currentSongTitle {
+    font-size: 0.8rem;
+    color: var(--pixel-secondary-accent);
+    text-shadow: 1px 1px 0 var(--pixel-shadow-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Điều chỉnh lại chiều rộng để tên bài hát không bị đẩy ra quá xa */
+    width: 80px; 
+    text-align: center;
+}
+
+.musical-notes-animation {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.musical-note {
+    position: absolute;
+    font-size: 20px;
+    color: var(--pixel-secondary-accent);
+    text-shadow: 1px 1px 0 var(--pixel-shadow-color);
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+
+
+/* --- Keyframes for Animations --- */
+@keyframes glow {
+    0% { filter: brightness(1); text-shadow: 2px 2px 0 var(--pixel-shadow-color); }
+    50% { filter: brightness(1.5); text-shadow: 0 0 8px var(--pixel-secondary-accent), 2px 2px 0 var(--pixel-shadow-color); }
+    100% { filter: brightness(1); text-shadow: 2px 2px 0 var(--pixel-shadow-color); }
+}
+
+@keyframes glow-text {
+    0% { text-shadow: 1px 1px 0 var(--pixel-shadow-color); }
+    50% { text-shadow: 0 0 5px var(--pixel-secondary-accent), 1px 1px 0 var(--pixel-shadow-color); }
+    100% { text-shadow: 1px 1px 0 var(--pixel-shadow-color); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+/* For musical notes */
+@keyframes float-up {
+    from {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100px) translateX(var(--random-x-offset)) scale(0.8);
+        opacity: 0;
+    }
+}
+
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-wrap: wrap; /* Allow nav items to wrap */
+        justify-content: center;
+    }
+
+    .navbar li {
+        margin: 5px 10px;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; }
+    h3 { font-size: 1.3rem; }
+    p { font-size: 0.9rem; }
+    .pixel-text-box { font-size: 0.9rem; }
+
+    .pixel-card {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+
+    .pixel-button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    #gameCanvasContainer {
+        width: 95%; /* Make game canvas take more width */
+    }
+
+    .timeline {
+        grid-template-columns: 1fr; /* Stack items on small screens */
+    }
+
+    .music-jukebox {
+        bottom: 10px;
+        right: 10px;
+        transform: scale(0.9); /* Make it slightly smaller on mobile */
+        transform-origin: bottom right;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 60px 10px;
+    }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; }
+    .pixel-button {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+    .emotional-text {
+        font-size: 1rem;
+    }
+}
+
+/* --- Journal Styling --- */
+#journal h2 {
+    margin-bottom: 10px;
+}
+
+#memory-journal p.pixel-text {
+    margin-bottom: 20px;
+}
+
+#memoryForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.pixel-textarea {
+    width: 100%;
+    box-sizing: border-box; /* Đảm bảo padding không làm tràn ra ngoài */
+    background-color: var(--pixel-game-bg);
+    border: 2px solid var(--pixel-border-color);
+    box-shadow: 4px 4px 0 var(--pixel-shadow-color);
+    padding: 10px;
+    font-family: 'Press Start 2P', sans-serif;
+    color: white;
+    resize: vertical; /* Cho phép thay đổi kích thước theo chiều dọc */
+}
+
+.pixel-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* Giúp placeholder dễ nhìn hơn */
+}
+
+#formMessage {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #ff69b4; /* Màu hồng dễ thương */
+
+}
+
+#easterEggContent video {
+    max-width: 100%; /* Đảm bảo video không vượt quá chiều rộng của phần tử cha */
+    height: auto; /* Giữ tỷ lệ khung hình của video */
+    display: block; /* Loại bỏ khoảng trống thừa ở dưới video */
+    margin: 10px auto; /* Căn giữa video và thêm khoảng trống */
+    border: 2px solid #ecf0f1; /* Thêm viền cho video */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
